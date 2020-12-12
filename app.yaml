@@ -1,0 +1,15 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+  - name: jinja2
+    version: latest
+
+handlers:
+  # - url: /update_EV/.*
+  #   script: update_EV.app
+  #   login: required
+
+  - url: /.*
+    script: main.app
