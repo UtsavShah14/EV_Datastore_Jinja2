@@ -5,7 +5,7 @@ import jinja2
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-from models import user_model
+from models import user_model, ev_datastore
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
