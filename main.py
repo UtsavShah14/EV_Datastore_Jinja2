@@ -6,7 +6,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 from models import user_model, ev_datastore
-
+from add_ev import AddEV
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions = ['jinja2.ext.autoescape'], autoescape = True)
@@ -43,8 +43,6 @@ class MainPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication(
     [('/', MainPage),
-    # ('/redirect', redirect)
-    # ('/update_EV', UpdateEV),
-    # ('/search_Form', searchForm)
+    ('/add_ev', AddEV),
     ], 
     debug=True)

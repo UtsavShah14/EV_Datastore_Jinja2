@@ -3,7 +3,7 @@ from google.appengine.ext import ndb
 class user_model(ndb.Model):
     username = ndb.StringProperty()
 
-class ev_datastore(ndb.model):
+class ev_datastore(ndb.Model):
     vehicle_name = ndb.StringProperty()
     vehicle_manufacturer = ndb.StringProperty()
     vehicle_year = ndb.IntegerProperty()
