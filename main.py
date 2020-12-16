@@ -7,6 +7,8 @@ from google.appengine.ext import ndb
 
 from models import user_model, ev_datastore
 from add_ev import AddEV
+from search_ev import SearchEV
+
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions = ['jinja2.ext.autoescape'], autoescape = True)
@@ -19,7 +21,8 @@ class MainPage(webapp2.RequestHandler):
 
         if user:
             url = users.create_logout_url('/')
-            url_string = 'logout'
+            url_string = 'Logout'
+            disabled = ''
             myuser_key = ndb.Key('user_model', user.user_id())
             myuser = myuser_key.get()
 
@@ -30,12 +33,14 @@ class MainPage(webapp2.RequestHandler):
 
         else:
             url = users.create_login_url('/')
-            url_string = 'login'
+            url_string = 'Login'
+            disabled = 'disabled'
 
         template_values = { 
             'url': url,
             'url_string': url_string,
-            'user': user
+            'user': user,
+            'disabled': disabled
             }
 
         template = JINJA_ENVIRONMENT.get_template('main.html')
@@ -44,5 +49,6 @@ class MainPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication(
     [('/', MainPage),
     ('/add_ev', AddEV),
+    ('/search_ev',SearchEV)
     ], 
     debug=True)

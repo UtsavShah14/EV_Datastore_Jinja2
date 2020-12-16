@@ -1,22 +1,44 @@
-<html>
-    <head>
-        <title>
-            EV Datastore
-        </title>
-    </head>
-    <body>
-        <p><h1 style="text-align: center;">Welcome to Ev Datastore</h1></p>
-        <div>
-            <form action="/">
-                <b>Search Filter </b><br>
-                Vehicle Name <input type="text" placeholder="Vehicle Name">
-            </form>
+{% extends "base.html" %}
+
+{% block home_status %}
+active
+{% endblock %}
+
+{% block content %}
+    
+{% if user %}
+    <div>
+        <p>
+        <h1 style="text-align: center;">Welcome to Ev Datastore</h1>
+        </p>
+        <div class="container">
+            <p style="text-align: center;">
+                Dear <i>{{ user.email() }}</i>, welcome to EV Datastore, one stop to find YOUR Electric Veihicle. <br>
+                
+                Thank you choosing us. You can now use the entire aplicaiton.
+                <br><br>
+                <b>Please have a look at our existing fleet of vehicles!</b>
+                <br><br>
+                If you think we have missed out any vehicle, you can add them to the list
+            </p>
         </div>
-        {% if user %}
-            Click <a href="/add_ev"> here </a> to add a vehicle to the database<br>
-            Please logout <a href="{{ url }}">here</a>
-        {% else %}
-            please login here <a href="{{ url }}">here</a>
-        {% endif %}
-    </body>
-</html>
+    </div>
+{% else %}
+    <div>
+        <p>
+        <h1 style="text-align: center;">Welcome to Ev Datastore</h1>
+        </p>
+        <div class="container">
+            <p style="text-align: center;">
+                Dear user, welcome to EV Datastore, one stop to find YOUR Electric Veihicle. <br>
+                If you haven't registered already, <br>
+                please <a href="{{ url }}">Sign-Up</a> <br> or <br> you can simply <a href="{{ url }}">Login</a> <br> to use
+                the full application.
+                <br><br>
+                <b>Meanwhile, do have a look at our existing fleet of vehicles!</b>
+            </p>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

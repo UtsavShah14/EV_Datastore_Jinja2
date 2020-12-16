@@ -14,8 +14,20 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class AddEV(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('add_ev.html')
-        self.response.write(template.render())
+        user = users.get_current_user()
+        url = users.create_logout_url('/')
+        url_string = 'Logout'
+        template_values = {
+            'url': url,
+            'url_string': url_string,
+            'user': user,
+            'action': 'Add'
+        }
+        if user:
+            template = JINJA_ENVIRONMENT.get_template('add_ev.html')
+            self.response.write(template.render(template_values))
+        else:
+            self.redirect('/')
     
     def post(self):
         button = self.request.get('button')

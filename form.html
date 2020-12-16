@@ -1,0 +1,14 @@
+<div class="container justify-content-center">
+    <form action="/add_ev" method="POST">
+        <div class="align-self-center">
+            Vehicle Name: <input type="text" class="form-control" name="vehicle_name" required><br>
+            Vehicle Manufacturer: <input type="text" name="vehicle_manufacturer" required><br>
+            Vehicle Cost: <input type="number" name="vehicle_cost" value=1000000 min="100000" max="10000000"><br>
+            Vehicle Year: <input type="number" name="vehicle_year" min="1980" max="2020" maxlength="4" required><br>
+            Vehicle Battery Size: <input type="number" name="vehicle_battery_size" value=10 min="10" max="100"><br>
+            Vehicle WLTP Range: <input type="number" name="vehicle_WLTP_range" value=50 min="50" max="1000"><br>
+            Vehicle Power: <input type="number" name="vehicle_power" value="25" min="25" max="1000"><br>
+            <input type="submit" name="button" value="{{ action }} Vehicle">
+        </div>
+    </form>
+</div>
